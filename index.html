@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html lang="id">
 <head>
   <meta charset="utf-8" />
@@ -16,109 +15,145 @@
     .photo-wrap{width:320px;height:420px;border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#071821,#132532);display:flex;align-items:center;justify-content:center;border:3px solid rgba(255,213,79,0.08)}
     .photo-wrap img{width:100%;height:100%;object-fit:cover;display:block}
     .controls{display:flex;gap:8px;margin-top:10px}
-    .btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:#dbeafe;cursor:pointer}.right{padding:22px 26px}
-h2{margin:0;font-size:22px;color:#ffffff}
-.section{margin-top:14px}
-ul{margin:8px 0 0 18px;padding:0}
-li{margin:6px 0}
-.badge{display:inline-block;background:rgba(255,213,79,0.12);color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:700;margin-top:8px}
-.note{margin-top:12px;background:rgba(255,255,255,0.02);padding:12px;border-radius:8px;color:#cfe3ff}
-.footer{display:flex;gap:10px;align-items:center;margin-top:18px}
+    .btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:#dbeafe;cursor:pointer}
+    .right{padding:22px 26px}
+    h2{margin:0;font-size:22px;color:#ffffff}
+    h3{margin:0;font-size:18px;color:#ffffff}
+    .section{margin-top:14px}
+    ul{margin:8px 0 0 18px;padding:0}
+    li{margin:6px 0}
+    .badge{display:inline-block;background:rgba(255,213,79,0.12);color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:700;margin-top:8px}
+    .note{margin-top:12px;background:rgba(255,255,255,0.02);padding:12px;border-radius:8px;color:#cfe3ff}
+    .footer{display:flex;gap:10px;align-items:center;margin-top:18px}
+    .file-input{display:none}
+    .hint{font-size:12px;color:#9fb2d9;margin-top:6px}
+    .tiktok-link{color:var(--accent);text-decoration:none;margin-top:10px;display:inline-block;padding:8px 16px;border:1px solid rgba(255,213,79,0.3);border-radius:8px;transition:all 0.3s}
+    .tiktok-link:hover{background:rgba(255,213,79,0.1)}
 
-.file-input{display:none}
-.hint{font-size:12px;color:#9fb2d9;margin-top:6px}
-
-@media (max-width:820px){.poster{grid-template-columns:1fr;}
-  .photo-wrap{width:90%;height:320px}
-}
-
+    @media (max-width:820px){
+      .poster{grid-template-columns:1fr;}
+      .photo-wrap{width:90%;height:320px}
+    }
   </style>
 </head>
 <body>
   <div class="poster" id="poster">
     <div class="left">
       <div class="title">OPEN MEMBER</div>
-      <div class="subtitle">BOLO</div><div class="photo-wrap" id="photoWrap">
-   <rect width='100%' height='100%' fill='%230b1320'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23cbdffd' font-size='24'>join? langsung dm</text></svg>
-     <a href="https://tiktok.com/@family.wong.royalty">Dm Tiktok</a>
+      <div class="subtitle">BOLO</div>
+      <div class="photo-wrap" id="photoWrap">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <rect width="100%" height="100%" fill="#0b1320"/>
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#cbdffd" font-size="24">join? langsung dm</text>
+        </svg>
+      </div>
+      <a href="https://tiktok.com/@family.wong.royalty" class="tiktok-link">DM TikTok</a>
+      
+      <div class="controls">
+        <input type="file" id="file" class="file-input" accept="image/*">
+        <button class="btn" id="resetBtn">Reset Foto</button>
+        <button class="btn" id="downloadBtn">Download</button>
+      </div>
+      <div class="hint">Tarik atau pilih foto di sini</div>
+    </div>
 
-  </div>
+    <div class="right">
+      <h2>Persyaratan</h2>
+      <div class="badge">Wajib CN • Wajib Guild Wars</div>
+      <div class="section">
+        <ul>
+          <li>Umur 15 cwok/cwek</li>
+          <li>No guild dobel</li>
+          <li>Siap mematuhi peraturan guild</li>
+          <li>Tidak on seminggu = kick (tanpa kabar)</li>
+          <li>Anti kutu loncat</li>
+          <li>Good attitude</li>
+          <li>No baperan</li>
+          <li>Push glory 1 hari wajib 200+ poin</li>
+        </ul>
+      </div>
 
-  <div class="controls">
-   
-</div>
+      <div class="section">
+        <h3>Catatan</h3>
+        <div class="note">
+          • Salam<br>
+          • Saling menghargai<br>
+          • Toxic sewajarnya<br>
+          • No spar guild<br>
+          • Menjaga nama baik guild<br>
+          • Sopan, tidak sombong, ramah
+        </div>
+      </div>
 
-<div class="right">
-  <h2>Persyaratan</h2>
-  <div class="badge">Wajib CN • Wajib Guild Wars</div>
-  <div class="section">
-    <ul>
-      <li>Umur 15 cwok/cwek</li>
-      <li>No guild dobel</li>
-      <li>Siap mematuhi peraturan guild</li>
-      <li>Tidak on seminggu = kick (tanpa kabar)</li>
-      <li>Anti kutu loncat</li>
-      <li>Good attitude</li>
-      <li>No baperan</li>
-      <li>Push glory 1 hari wajib 200+ poin</li>
-    </ul>
-  </div>
+      <div class="footer">
+        <div style="flex:1"></div>
+      </div>
 
-  <div class="section">
-    <h3>Catatan</h3>
-    <div class="note">
-      • Salam<br>
-      • Saling menghargai<br>
-      • Toxic sewajarnya<br>
-      • No spar guild<br>
-      • Menjaga nama baik guild<br>
-      • Sopan, tidak sombong, ramah
+      <p style="font-size:12px;color:#7f9cc9;margin-top:12px">sebelum join dibaca dulu persyaratan nya dan jangan lupa saat DM salam dulu.</p>
     </div>
   </div>
 
-  <div class="footer">
-    <div style="flex:1">
-   
-  </div>
-
-  <p style="font-size:12px;color:#7f9cc9;margin-top:12px">sebelum join dibaca dulu persyaratan nya dan jangan lupa saat DM salam dulu.</p>
-</div>
-
-  </div>  <script>
+  <script>
     const fileInput = document.getElementById('file');
-    const userPhoto = document.getElementById('userPhoto');
     const photoWrap = document.getElementById('photoWrap');
     const resetBtn = document.getElementById('resetBtn');
     const downloadBtn = document.getElementById('downloadBtn');
 
-    fileInput.addEventListener('change', e=>{
+    // Create image element for preview
+    const userPhoto = document.createElement('img');
+    userPhoto.id = 'userPhoto';
+    userPhoto.style.display = 'none';
+    photoWrap.appendChild(userPhoto);
+
+    fileInput.addEventListener('change', e => {
       const f = e.target.files[0];
       if(!f) return;
       const url = URL.createObjectURL(f);
       userPhoto.src = url;
+      userPhoto.style.display = 'block';
+      
+      // Hide SVG when image is loaded
+      const svg = photoWrap.querySelector('svg');
+      if(svg) svg.style.display = 'none';
     });
 
     // drag & drop
-    ['dragenter','dragover'].forEach(ev=>{
-      photoWrap.addEventListener(ev, e=>{e.preventDefault();photoWrap.style.outline='3px dashed rgba(255,213,79,0.25)'});
+    ['dragenter','dragover'].forEach(ev => {
+      photoWrap.addEventListener(ev, e => {
+        e.preventDefault();
+        photoWrap.style.outline='3px dashed rgba(255,213,79,0.25)';
+      });
     });
-    ['dragleave','drop'].forEach(ev=>{
-      photoWrap.addEventListener(ev, e=>{e.preventDefault();photoWrap.style.outline='none'});
+    
+    ['dragleave','drop'].forEach(ev => {
+      photoWrap.addEventListener(ev, e => {
+        e.preventDefault();
+        photoWrap.style.outline='none';
+      });
     });
-    photoWrap.addEventListener('drop', e=>{
+    
+    photoWrap.addEventListener('drop', e => {
       const f = e.dataTransfer.files[0];
       if(!f) return;
       const url = URL.createObjectURL(f);
       userPhoto.src = url;
+      userPhoto.style.display = 'block';
+      
+      // Hide SVG when image is loaded
+      const svg = photoWrap.querySelector('svg');
+      if(svg) svg.style.display = 'none';
     });
 
-    resetBtn.addEventListener('click', ()=>{
-      userPhoto.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='800'><rect width='100%' height='100%' fill='%230b1320'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23cbdffd' font-size='24'>Tarik atau pilih foto di sini</text></svg>";
+    resetBtn.addEventListener('click', () => {
+      userPhoto.style.display = 'none';
+      const svg = photoWrap.querySelector('svg');
+      if(svg) svg.style.display = 'block';
       fileInput.value = '';
     });
 
-    downloadBtn.addEventListener('click', ()=>{
+    downloadBtn.addEventListener('click', () => {
       window.print();
     });
-  </script></body>
+  </script>
+</body>
 </html>
