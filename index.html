@@ -1,111 +1,876 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>OPEN MEMBER BOLO</title>
-  <style>
-    :root{--accent:#ffd54f;--dark:#0f1724;--card:#0b1220}
-    *{box-sizing:border-box;font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
-    body{margin:0;background:linear-gradient(180deg,#071129 0%, #0b1b2b 100%);color:#e6eef8;display:flex;min-height:100vh;align-items:center;justify-content:center;padding:24px;overflow-x:hidden}
-    
-    /* Animasi background */
-    .bg-animation{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;opacity:0.1}
-    .bg-circle{position:absolute;border-radius:50%;background:var(--accent);animation:float 20s infinite linear}
-    .bg-circle:nth-child(1){width:100px;height:100px;top:10%;left:10%;animation-delay:0s}
-    .bg-circle:nth-child(2){width:150px;height:150px;top:60%;left:80%;animation-delay:5s}
-    .bg-circle:nth-child(3){width:80px;height:80px;top:80%;left:20%;animation-delay:10s}
-    .bg-circle:nth-child(4){width:120px;height:120px;top:30%;left:70%;animation-delay:15s}
-    
-    @keyframes float{
-      0%{transform:translate(0,0) rotate(0deg);opacity:0.1}
-      25%{transform:translate(100px,50px) rotate(90deg);opacity:0.15}
-      50%{transform:translate(50px,100px) rotate(180deg);opacity:0.1}
-      75%{transform:translate(-50px,50px) rotate(270deg);opacity:0.15}
-      100%{transform:translate(0,0) rotate(360deg);opacity:0.1}
-    }
-    
-    .poster{width:900px;max-width:96vw;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));border-radius:16px;box-shadow:0 10px 30px rgba(2,6,23,0.6);overflow:hidden;display:grid;grid-template-columns:380px 1fr;animation:fadeIn 1s ease-out}
-    
-    @keyframes fadeIn{
-      from{opacity:0;transform:translateY(20px)}
-      to{opacity:1;transform:translateY(0)}
-    }
-    
-    .left{padding:18px;display:flex;flex-direction:column;align-items:center;gap:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));}
-    
-    /* Title di tengah */
-    .title-container{display:flex;flex-direction:column;align-items:center;width:100%;text-align:center}
-    .title{font-size:32px;font-weight:800;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-top:6px;animation:pulse 2s infinite}
-    
-    @keyframes pulse{
-      0%{transform:scale(1)}
-      50%{transform:scale(1.05)}
-      100%{transform:scale(1)}
-    }
-    
-    .subtitle{font-size:14px;color:#bcd6ff}
-    .photo-wrap{width:320px;height:420px;border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#071821,#132532);display:flex;flex-direction:column;align-items:center;justify-content:center;border:3px solid rgba(255,213,79,0.08);transition:all 0.3s ease}
-    .photo-wrap:hover{border-color:rgba(255,213,79,0.4);transform:translateY(-5px);box-shadow:0 15px 25px rgba(0,0,0,0.3)}
-    .photo-wrap img{width:100%;height:100%;object-fit:cover;display:block}
-    .join-text{color:#cbdffd;margin-top:15px;font-size:18px;text-align:center;animation:bounce 2s infinite}
-    
-    @keyframes bounce{
-      0%, 20%, 50%, 80%, 100%{transform:translateY(0)}
-      40%{transform:translateY(-10px)}
-      60%{transform:translateY(-5px)}
-    }
-    
-    .controls{display:flex;gap:8px;margin-top:10px}
-    .btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:#dbeafe;cursor:pointer;transition:all 0.3s ease}
-    .btn:hover{background:rgba(255,255,255,0.05);border-color:rgba(255,213,79,0.3);transform:scale(1.05)}
-    .right{padding:22px 26px}
-    h2{margin:0;font-size:22px;color:#ffffff}
-    h3{margin:0;font-size:18px;color:#ffffff}
-    .section{margin-top:14px}
-    ul{margin:8px 0 0 18px;padding:0}
-    li{margin:6px 0;position:relative;padding-left:10px}
-    li::before{content:"•";color:var(--accent);position:absolute;left:-10px}
-    .badge{display:inline-block;background:rgba(255,213,79,0.12);color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:700;margin-top:8px;animation:glow 2s infinite alternate}
-    
-    @keyframes glow{
-      from{box-shadow:0 0 5px rgba(255,213,79,0.5)}
-      to{box-shadow:0 0 15px rgba(255,213,79,0.8)}
-    }
-    
-    .note{margin-top:12px;background:rgba(255,255,255,0.02);padding:12px;border-radius:8px;color:#cfe3ff;transition:all 0.3s ease}
-    .note:hover{background:rgba(255,255,255,0.05);transform:translateX(5px)}
-    .footer{display:flex;gap:10px;align-items:center;margin-top:18px}
-    .file-input{display:none}
-    .hint{font-size:12px;color:#9fb2d9;margin-top:6px}
-    .tiktok-link{color:var(--accent);text-decoration:none;margin-top:10px;display:inline-block;padding:8px 16px;border:1px solid rgba(255,213,79,0.3);border-radius:8px;transition:all 0.3s;animation:pulse 2s infinite}
-    .tiktok-link:hover{background:rgba(255,213,79,0.1);transform:scale(1.05)}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --matrix-green: #00ff41;
+            --matrix-dark: #0a0a0a;
+            --matrix-gray: #003b00;
+            --text-glow: #00ff41;
+            --card-bg: rgba(0, 20, 0, 0.7);
+        }
 
-    @media (max-width:820px){
-      .poster{grid-template-columns:1fr;}
-      .photo-wrap{width:90%;height:320px}
-    }
-  </style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            background: var(--matrix-dark);
+            color: var(--matrix-green);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Matrix Canvas Background */
+        #matrixCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Header */
+        .header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--matrix-green);
+            box-shadow: 0 0 20px var(--matrix-green);
+            background: rgba(0, 10, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 0 0 10px var(--matrix-green);
+            animation: glitch 3s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 100% { text-shadow: 0 0 10px var(--matrix-green); }
+            50% { text-shadow: 2px 0 10px #ff0080, -2px 0 10px #00ffff; }
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: #00aa00;
+            margin-top: 5px;
+            letter-spacing: 3px;
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        @media (min-width: 768px) {
+            .main-container {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--matrix-gray);
+            border-radius: 5px;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
+        }
+
+        .card:hover {
+            border-color: var(--matrix-green);
+            box-shadow: 0 0 25px rgba(0, 255, 65, 0.2);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: var(--matrix-green);
+            animation: scanline 8s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .card-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--matrix-green);
+            text-shadow: 0 0 5px currentColor;
+            border-bottom: 1px solid var(--matrix-gray);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Search Box */
+        .search-container {
+            grid-column: 1 / -1;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--matrix-gray);
+            color: var(--matrix-green);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: var(--matrix-green);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+        }
+
+        .search-input::placeholder {
+            color: #008800;
+        }
+
+        .search-btn {
+            background: var(--matrix-green);
+            color: var(--matrix-dark);
+            border: none;
+            padding: 0 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .search-btn:hover {
+            background: #00cc33;
+            box-shadow: 0 0 20px var(--matrix-green);
+        }
+
+        /* Quick Links */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+        }
+
+        .link-item {
+            background: rgba(0, 30, 0, 0.5);
+            border: 1px solid var(--matrix-gray);
+            padding: 20px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--matrix-green);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-item:hover {
+            border-color: var(--matrix-green);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 255, 65, 0.2);
+        }
+
+        .link-item::before {
+            content: '>';
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .link-item:hover::before {
+            opacity: 1;
+        }
+
+        .link-item i {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Time Widget */
+        .time-widget {
+            text-align: center;
+        }
+
+        .time-display {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            color: var(--matrix-green);
+            text-shadow: 0 0 10px currentColor;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .date-display {
+            font-size: 1.2rem;
+            color: #00aa00;
+            margin-bottom: 20px;
+        }
+
+        /* System Status */
+        .system-status {
+            font-size: 0.9rem;
+        }
+
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 5px 0;
+            border-bottom: 1px dotted var(--matrix-gray);
+        }
+
+        .status-value {
+            color: #00ff00;
+        }
+
+        /* Weather Widget */
+        .weather-display {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .weather-temp {
+            font-size: 2.5rem;
+            font-family: 'Orbitron', sans-serif;
+            color: var(--matrix-green);
+        }
+
+        .weather-details {
+            text-align: right;
+            color: #00aa00;
+        }
+
+        /* Notes Widget */
+        .notes-container {
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .notes-container::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .notes-container::-webkit-scrollbar-thumb {
+            background: var(--matrix-green);
+        }
+
+        .note-input {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .note-input input {
+            flex: 1;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--matrix-gray);
+            color: var(--matrix-green);
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .note-item {
+            background: rgba(0, 30, 0, 0.3);
+            border-left: 3px solid var(--matrix-green);
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .note-date {
+            font-size: 0.7rem;
+            color: #008800;
+            margin-top: 5px;
+        }
+
+        .delete-note {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background: none;
+            border: none;
+            color: #ff0033;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        /* Terminal Style */
+        .terminal {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--matrix-gray);
+            padding: 20px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            height: 200px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+
+        .terminal-line {
+            margin-bottom: 5px;
+        }
+
+        .terminal-prompt {
+            color: var(--matrix-green);
+        }
+
+        .terminal-output {
+            color: #00aa00;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            border-top: 1px solid var(--matrix-gray);
+            color: #008800;
+            font-size: 0.8rem;
+        }
+
+        /* Matrix Code Rain Effect */
+        .matrix-code {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 1.8rem;
+            }
+            
+            .time-display {
+                font-size: 2.2rem;
+            }
+            
+            .links-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+            
+            .main-container {
+                padding: 0 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Background animation -->
-  <div class="bg-animation">
-    <div class="bg-circle"></div>
-    <div class="bg-circle"></div>
-    <div class="bg-circle"></div>
-    <div class="bg-circle"></div>
-  </div>
+    <!-- Matrix Canvas -->
+    <canvas id="matrixCanvas"></canvas>
 
-  <div class="poster" id="poster">
-    <div class="left">
-      <div class="title-container">
-        <div class="title">OPEN MEMBER</div>
-        <div class="subtitle">BOLO</div>
-      </div>
-      
-      <div class="photo-wrap" id="photoWrap">
-        <!-- Foto default pb.png -->
-        <img id="userPhoto" src="pb.png" alt="Member Photo">
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">Matrix<span style="color: #ffffff">.v3</span></div>
+        <div class="subtitle">> SYSTEM ONLINE_</div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Search -->
+        <div class="card search-container">
+            <div class="search-box">
+                <input type="text" class="search-input" id="searchInput" placeholder="> Enter search query...">
+                <button class="search-btn" id="searchBtn" onclick="performSearch()">
+                    <i class="fas fa-search"></i> SEARCH
+                </button>
+            </div>
+        </div>
+
+        <!-- Left Column -->
+        <div class="left-column">
+            <!-- Time & Date -->
+            <div class="card time-widget">
+                <div class="time-display" id="timeDisplay">00:00:00</div>
+                <div class="date-display" id="dateDisplay">01 JAN 2023</div>
+                <div class="system-status">
+                    <div class="status-item">
+                        <span>SYSTEM:</span>
+                        <span class="status-value" id="systemStatus">ONLINE</span>
+                    </div>
+                    <div class="status-item">
+                        <span>CONNECTION:</span>
+                        <span class="status-value">SECURE</span>
+                    </div>
+                    <div class="status-item">
+                        <span>UPTIME:</span>
+                        <span class="status-value" id="uptimeCounter">00:00:00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="card">
+                <div class="card-title">
+                    <i class="fas fa-link"></i>
+                    QUICK ACCESS
+                </div>
+                <div class="links-grid" id="linksGrid">
+                    <!-- Links populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Notes -->
+            <div class="card">
+                <div class="card-title">
+                    <i class="fas fa-sticky-note"></i>
+                    QUICK NOTES
+                </div>
+                <div class="note-input">
+                    <input type="text" id="noteInput" placeholder="> Type note...">
+                    <button class="search-btn" style="padding: 0 15px;" onclick="addNote()">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+                <div class="notes-container" id="notesContainer">
+                    <!-- Notes will appear here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+            <!-- Weather -->
+            <div class="card">
+                <div class="card-title">
+                    <i class="fas fa-cloud"></i>
+                    WEATHER DATA
+                </div>
+                <div class="weather-display">
+                    <div>
+                        <div class="weather-temp" id="weatherTemp">--°C</div>
+                        <div id="weatherLocation">JAKARTA</div>
+                    </div>
+                    <div class="weather-details" id="weatherDetails">
+                        <div>HUMIDITY: --%</div>
+                        <div>CONDITION: --</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Terminal -->
+            <div class="card">
+                <div class="card-title">
+                    <i class="fas fa-terminal"></i>
+                    SYSTEM TERMINAL
+                </div>
+                <div class="terminal" id="terminal">
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">matrix@system:~$ </span>
+                        <span class="terminal-output">System initialized...</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">matrix@system:~$ </span>
+                        <span class="terminal-output">Loading dashboard...</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">matrix@system:~$ </span>
+                        <span class="terminal-output">Connection established</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">matrix@system:~$ </span>
+                        <span class="terminal-output" id="currentTimeTerminal">Time synchronized</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Tools -->
+            <div class="card">
+                <div class="card-title">
+                    <i class="fas fa-tools"></i>
+                    QUICK TOOLS
+                </div>
+                <div class="links-grid" style="grid-template-columns: repeat(2, 1fr);">
+                    <button class="link-item" onclick="clearNotes()">
+                        <i class="fas fa-trash"></i>
+                        CLEAR NOTES
+                    </button>
+                    <button class="link-item" onclick="toggleMatrixEffect()">
+                        <i class="fas fa-code"></i>
+                        TOGGLE MATRIX
+                    </button>
+                    <button class="link-item" onclick="reloadWeather()">
+                        <i class="fas fa-sync-alt"></i>
+                        RELOAD WEATHER
+                    </button>
+                    <button class="link-item" onclick="showSystemInfo()">
+                        <i class="fas fa-info-circle"></i>
+                        SYSTEM INFO
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div>> SYSTEM STATUS: <span id="footerStatus">OPERATIONAL</span> | LAST UPDATE: <span id="lastUpdate">--:--:--</span></div>
+        <div style="margin-top: 10px; font-size: 0.7rem;">
+            > MATRIX DASHBOARD v1.0 | "Wake up, Neo..."
+        </div>
+    </footer>
+
+    <script>
+        // Matrix Rain Effect
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let matrixEffectActive = true;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const chars = "01";
+        const charArray = chars.split("");
+        const rainDrops = [];
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+
+        for(let i = 0; i < columns; i++) {
+            rainDrops[i] = 1;
+        }
+
+        function drawMatrix() {
+            if (!matrixEffectActive) {
+                ctx.fillStyle = 'rgba(0, 10, 0, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                return;
+            }
+
+            ctx.fillStyle = 'rgba(0, 10, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#00ff41';
+            ctx.font = fontSize + 'px monospace';
+
+            for(let i = 0; i < rainDrops.length; i++) {
+                const text = charArray[Math.floor(Math.random() * charArray.length)];
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                
+                if(rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975){
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        }
+
+        // Time and Date
+        function updateTime() {
+            const now = new Date();
+            
+            // Update time display
+            const timeStr = now.toLocaleTimeString('en-US', {hour12: false});
+            document.getElementById('timeDisplay').textContent = timeStr;
+            
+            // Update date display
+            const dateStr = now.toLocaleDateString('en-US', {
+                day: '2-digit',
+                month: 'short',
+                year: 'numeric'
+            }).toUpperCase();
+            document.getElementById('dateDisplay').textContent = dateStr;
+            
+            // Update terminal
+            document.getElementById('currentTimeTerminal').textContent = 
+                `Current time: ${timeStr}`;
+            
+            // Update footer
+            document.getElementById('lastUpdate').textContent = timeStr;
+        }
+
+        // Uptime Counter
+        let startTime = Date.now();
+        function updateUptime() {
+            const now = Date.now();
+            const diff = now - startTime;
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            const uptimeStr = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            document.getElementById('uptimeCounter').textContent = uptimeStr;
+        }
+
+        // Quick Links
+        const quickLinks = [
+            { name: 'GMAIL', url: 'https://mail.google.com', icon: 'fas fa-envelope' },
+            { name: 'GITHUB', url: 'https://github.com', icon: 'fab fa-github' },
+            { name: 'YOUTUBE', url: 'https://youtube.com', icon: 'fab fa-youtube' },
+            { name: 'REDDIT', url: 'https://reddit.com', icon: 'fab fa-reddit' },
+            { name: 'TWITTER', url: 'https://twitter.com', icon: 'fab fa-twitter' },
+            { name: 'DISCORD', url: 'https://discord.com', icon: 'fab fa-discord' },
+            { name: 'NOTION', url: 'https://notion.so', icon: 'fas fa-book' },
+            { name: 'DRIVE', url: 'https://drive.google.com', icon: 'fas fa-cloud' }
+        ];
+
+        function renderQuickLinks() {
+            const container = document.getElementById('linksGrid');
+            container.innerHTML = '';
+            
+            quickLinks.forEach(link => {
+                const linkEl = document.createElement('a');
+                linkEl.href = link.url;
+                linkEl.className = 'link-item';
+                linkEl.target = '_blank';
+                linkEl.innerHTML = `
+                    <i class="${link.icon}"></i>
+                    ${link.name}
+                `;
+                container.appendChild(linkEl);
+            });
+        }
+
+        // Search Function
+        function performSearch() {
+            const input = document.getElementById('searchInput').value.trim();
+            if (!input) return;
+            
+            if (input.startsWith('http://') || input.startsWith('https://') || input.includes('.')) {
+                window.open(input.startsWith('http') ? input : `https://${input}`, '_blank');
+            } else {
+                window.open(`https://www.google.com/search?q=${encodeURIComponent(input)}`, '_blank');
+            }
+            
+            // Add to terminal
+            addTerminalLine(`Search: ${input.substring(0, 30)}${input.length > 30 ? '...' : ''}`);
+            document.getElementById('searchInput').value = '';
+        }
+
+        // Notes System
+        let notes = JSON.parse(localStorage.getItem('matrix_notes')) || [];
+
+        function loadNotes() {
+            const container = document.getElementById('notesContainer');
+            container.innerHTML = '';
+            
+            if (notes.length === 0) {
+                container.innerHTML = '<div style="text-align: center; color: #008800; padding: 20px;">No notes yet</div>';
+                return;
+            }
+            
+            notes.slice(0, 5).forEach((note, index) => {
+                const noteEl = document.createElement('div');
+                noteEl.className = 'note-item';
+                noteEl.innerHTML = `
+                    ${note.text}
+                    <div class="note-date">${new Date(note.date).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                    <button class="delete-note" onclick="deleteNote(${index})">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+                container.appendChild(noteEl);
+            });
+        }
+
+        function addNote() {
+            const input = document.getElementById('noteInput');
+            const text = input.value.trim();
+            
+            if (!text) return;
+            
+            notes.unshift({
+                text,
+                date: new Date().toISOString()
+            });
+            
+            // Keep only last 10 notes
+            if (notes.length > 10) notes = notes.slice(0, 10);
+            
+            localStorage.setItem('matrix_notes', JSON.stringify(notes));
+            loadNotes();
+            input.value = '';
+            
+            addTerminalLine(`Note added: "${text.substring(0, 20)}${text.length > 20 ? '...' : ''}"`);
+        }
+
+        function deleteNote(index) {
+            notes.splice(index, 1);
+            localStorage.setItem('matrix_notes', JSON.stringify(notes));
+            loadNotes();
+            addTerminalLine('Note deleted');
+        }
+
+        function clearNotes() {
+            if (notes.length === 0) return;
+            
+            if (confirm('Delete all notes?')) {
+                notes = [];
+                localStorage.removeItem('matrix_notes');
+                loadNotes();
+                addTerminalLine('All notes cleared');
+            }
+        }
+
+        // Weather
+        async function loadWeather() {
+            try {
+                // Fallback weather data
+                const mockWeather = {
+                    temp: Math.floor(Math.random() * 15) + 20, // 20-35°C
+                    humidity: Math.floor(Math.random() * 30) + 50, // 50-80%
+                    condition: ['Clear', 'Cloudy', 'Rain', 'Sunny'][Math.floor(Math.random() * 4)]
+                };
+                
+                document.getElementById('weatherTemp').textContent = `${mockWeather.temp}°C`;
+                document.getElementById('weatherDetails').innerHTML = `
+                    <div>HUMIDITY: ${mockWeather.humidity}%</div>
+                    <div>CONDITION: ${mockWeather.condition}</div>
+                `;
+                
+                addTerminalLine(`Weather updated: ${mockWeather.temp}°C, ${mockWeather.condition}`);
+                
+            } catch (error) {
+                console.error('Weather error:', error);
+            }
+        }
+
+        function reloadWeather() {
+            document.getElementById('weatherTemp').textContent = '--°C';
+            document.getElementById('weatherDetails').innerHTML = `
+                <div>HUMIDITY: --%</div>
+                <div>CONDITION: --</div>
+            `;
+            
+            addTerminalLine('Refreshing weather data...');
+            setTimeout(loadWeather, 1000);
+        }
+
+        // Terminal Functions
+        function addTerminalLine(message) {
+            const terminal = document.getElementById('terminal');
+            const line = document.createElement('div');
+            line.className = 'terminal-line';
+            line.innerHTML = `
+                <span class="terminal-prompt">matrix@system:~$ </span>
+                <span class="terminal-output">${message}</span>
+            `;
+            terminal.appendChild(line);
+            terminal.scrollTop = terminal.scrollHeight;
+            
+            // Keep only last 10 lines
+            const lines = terminal.querySelectorAll('.terminal-line');
+            if (lines.length > 10) {
+                lines[0].remove();
+            }
+        }
+
+        // System Functions
+        function toggleMatrixEffect() {
+            matrixEffectActive = !matrixEffectActive;
+            addTerminalLine(`Matrix effect ${matrixEffectActive ? 'ENABLED' : 'DISABLED'}`);
+            
+            // Update system status
+            document.getElementById('systemStatus').textContent = 
+                matrixEffectActive ? 'ONLINE' : 'MINIMAL';
+            document.getElementById('systemStatus').style.color = 
+                matrixEffectActive ? '#00ff00' : '#ffff00';
+        }
+
+        function showSystemInfo() {
+            const info = `
+                Browser: ${navigator.userAgent.substring(0, 30)}...
+                Screen: ${screen.width}x${screen.height}
+                Timezone: ${Intl.DateTimeFormat().resolvedOptions().timeZone}
+                Notes: ${notes.length} saved
+                Links: ${quickLinks.length} configured
+            `.split('\n').filter(line => line.trim());
+            
+            info.forEach(line => addTerminalLine(line.trim()));
+        }
+
+        // Initialize everything
+        function init() {
+            // Set up event listeners
+            document.getElementById('searchInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') performSearch();
+            });
+            
+            // Start animations
+            function animate() {
+                drawMatrix();
+                requestAnimationFrame(animate);
+            }
+            
+            animate();
+            
+            // Initial updates
+            updateTime();
+            renderQuickLinks();
+            loadNotes();
+            loadWeather();
+            
+            // Start intervals
+            setInterval(updateTime, 1000);
+            setInterval(updateUptime, 1000);
+            setInterval(loadWeather, 300000); // Update weather every 5 minutes
+            
+            // Initial terminal message
+            setTimeout(() => {
+                addTerminalLine('System ready');
+                addTerminalLine('Type commands or use search above');
+            }, 1000);
+        }
+
+        // Start the system
+        init();
+    </script>
+</body>
+  </html>        <img id="userPhoto" src="pb.png" alt="Member Photo">
       </div>
       
       <!-- Teks "join? langsung dm" dipindahkan ke bawah foto -->
